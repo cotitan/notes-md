@@ -111,4 +111,4 @@
     * 拉普拉斯核 $k(x_i, x_j) = exp(-\frac{||x_i-x_j||}{\delta})$，$\delta$为拉普拉斯核的带宽
     * sigmoid核 $k(x_i, x_j) = tanh(\beta x_i^Tx_j + \theta)$, $\beta > 0, \theta < 0$
     
-    也可通关组合得到
+    也可通过组合得到
