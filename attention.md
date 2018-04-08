@@ -13,19 +13,16 @@ Encoder将输入句子X的信息编码成一个C，后续解码时，无论要�
 ## 引入注意力机制的encoder-decoder框架
 
 <img src="./resources/attention2.png" width=500>
+<img src="./resources/attention-model.png" >
 
-其中$C_i = \sum_{j=1}^{T_x}\alpha^{\langle i,j\rangle}*a^j$,  $a^j$表示encoder中第i个单词对应的输出，$\alpha^{i,j}$表示在生成第i个词时，关于第j个输入的注意力。
+其中$C_i = \sum_{j=1}^{T_x}\alpha^{\langle i,j\rangle}*a^j$, 上图attention模块的展开如下图，即计算$C_i$的模块。$a^j$表示encoder中第i个单词对应的输出，$\alpha^{i,j}$表示在生成第i个词时，关于第j个输入的注意力。
 
-那么$\alpha^{i,j}$应该怎么计算呢？
+<img src="./resources/attention-calc-C.png" width=500>
+
+那么$\alpha^{i,j}$应该怎么计算呢？上图的softmax层后即可得到。
 
 $$\alpha^{i,j} = \frac{exp(e^{<i,j>})}{\sum_{j=1}^{T_x}exp(e^{<i,j>})}$$
 
-$e^{<i,j>}$的计算方法如下：其中$s^{<t-1>}$表示decoder中上一step的隐藏层状态。
+$e^{<i,j>}$的计算方法如下：其中$s^{<t-1>}$表示decoder中上一step的隐藏层状态。上图的Dense层后即可得到。
 
 <img src="./resources/attention-4.jpeg" >
-
-decoder可表示为$y^i=g(y^{t-1}, C_i)$，即上一step得到的词和该step的注意力$C_i$作为输入，来得到$y^i$，如下图所示：
-
-<img src="./resources/attention-5.jpeg" width=320>
-
-<img src="./resources/attention-6.jpeg" width=450>
