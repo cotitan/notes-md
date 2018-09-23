@@ -1,4 +1,5 @@
 ## 文本摘要的评价指标-ROUGE
+#### Recall-Oriented Understudy for Gisting Evaluation
 ### precision和recall的定义
 用n表示重复词的个数，$n_y$表示参考摘要的长度，$n_{pred}$表示预测摘要的长度
 
